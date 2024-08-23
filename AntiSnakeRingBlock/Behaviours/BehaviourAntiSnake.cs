@@ -34,6 +34,11 @@ namespace AntiSnakeRingBlock.Behaviours
 
         public bool ExecuteBlockBehaviour(BehaviourContext behaviourContext)
         {
+            if (behaviourContext?.CollisionInfo?.PreResolutionCollisionInfo == null)
+            {
+                return true;
+            }
+
             AdvCollisionInfo advCollisionInfo = behaviourContext.CollisionInfo.PreResolutionCollisionInfo;
 
             IsPlayerOnBlock = advCollisionInfo.IsCollidingWith<BlockAntiSnake>();
